@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import joblib
+import pickle
 from sklearn.ensemble import RandomForestClassifier
 
 st.title('Iris model inference!')
@@ -30,7 +30,8 @@ if st.session_state.clicked[1]:
         df = pd.read_csv(uploaded_file, low_memory = True)
         st.header('Uploaded data sample')
         st.write(df.head())
-        model = joblib.load('model.joblib')
+        file = open('model.pkl', 'rb')
+        model = pickle.load(file)
         pred = model.predict_proba(df)
         pred = pd.DataFrame(pred, columns = ['setosa_probability', 'versicolor_probability', 'virginica_probability'])
         st.header('Predicted values')
