@@ -30,17 +30,21 @@ if st.session_state.clicked[1]:
         df = pd.read_csv(uploaded_file, low_memory = True)
         st.header('Uploaded data sample')
         st.write(df.head())
-        file = open('model.pkl', 'rb')
-        model = pickle.load(file)
-        pred = model.predict_proba(df)
-        pred = pd.DataFrame(pred, columns = ['setosa_probability', 'versicolor_probability', 'virginica_probability'])
-        st.header('Predicted values')
-        st.write(pred.head())
+        try:
+            file = open('model.pkl', 'rb')
+            model = pickle.load(file)
+            pred = model.predict_proba(df)
+            pred = pd.DataFrame(pred, columns = ['setosa_probability', 'versicolor_probability', 'virginica_probability'])
+            st.header('Predicted values')
+            st.write(pred.head())
 
-        pred = pred.to_csv(index=False).encode('utf-8')
-        st.download_button('Download prediction',
-                        pred,
-                        'prediction.csv',
-                        'text/csv',
-                        key='download-csv')
+            pred = pred.to_csv(index=False).encode('utf-8')
+            st.download_button('Download prediction',
+                            pred,
+                            'prediction.csv',
+                            'text/csv',
+                            key='download-csv')
+        except Exception as e:
+            st.error(f"Error loading model: {str(e)}")
+            st.info("Please check if the model file is compatible with the current scikit-learn version.")
 
