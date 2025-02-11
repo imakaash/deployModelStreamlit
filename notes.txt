@@ -14,3 +14,4 @@ python -m pip install --upgrade pip
 pip install scikit-learn pandas streamlit joblib
 
 deactivate
+rm -rf myenv
