@@ -18,14 +18,16 @@ To run this app, you need to install the required Python libraries. A `requireme
 
 ## Usage
 
-1.  Run the Streamlit app:
+1.  To run the Streamlit app on local machine run the command:
     
     `streamlit run app.py` 
+
+2.  Alternatively the deployed app can be accessed using this link: [https://iris-model-deploy.streamlit.app](https://iris-model-deploy.streamlit.app/)
     
-2.  Click on the "Let's get started" button.
-3.  Upload a CSV file containing Iris feature data.
-4.  View the sample of uploaded data and predicted probabilities.
-5.  Download the prediction results if desired.
+3.  Click on the "Let's get started" button.
+4.  Upload a CSV file containing Iris feature data.
+5.  View the sample of uploaded data and predicted probabilities.
+6.  Download the prediction results if desired.
 
 ## Data Format
 
